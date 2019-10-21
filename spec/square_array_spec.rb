@@ -2,6 +2,10 @@ describe '#square_array' do
 
   it 'does not call on collect/map or inject' do
     numbers = [1,2,3]
+    expect(numbers).to receive(:each)
+    ([1, 2, 3]).each(*(any args))
+           expected: 1 time with any arguments
+           received: 0 times with any arguments
     expect(numbers).to_not receive(:collect)
     expect(numbers).to_not receive(:map)
     expect(numbers).to_not receive(:inject)
